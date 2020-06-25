@@ -1,0 +1,15 @@
+reference:
+http://echrislynch.com/2018/07/13/turning-a-pdf-into-a-pandas-dataframe/
+
+
+
+https://stackoverflow.com/questions/43314559/extracting-text-from-a-pdf-all-pages-and-output-file-using-python
+
+import PyPDF2
+with open('sample.pdf','rb') as pdf_file, open('sample.txt', 'w') as text_file:
+    read_pdf = PyPDF2.PdfFileReader(pdf_file)
+    number_of_pages = read_pdf.getNumPages()
+    for page_number in range(number_of_pages):   # use xrange in Py2
+        page = read_pdf.getPage(page_number)
+        page_content = page.extractText()
+        text_file.write(page_content)
